@@ -1,0 +1,129 @@
+[
+    {
+        "id": "99ea77e7965c26d2",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "51770e652630c4ea",
+        "type": "inject",
+        "z": "99ea77e7965c26d2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "70a6dcac6b2cdece",
+                "1e71f0d418d55656"
+            ]
+        ]
+    },
+    {
+        "id": "b098fe3e516192fe",
+        "type": "debug",
+        "z": "99ea77e7965c26d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "70a6dcac6b2cdece",
+        "type": "function",
+        "z": "99ea77e7965c26d2",
+        "name": "Binary to Date mode",
+        "func": "\n// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "b098fe3e516192fe",
+                "75f086739b02cc09"
+            ]
+        ]
+    },
+    {
+        "id": "75f086739b02cc09",
+        "type": "ui_text",
+        "z": "99ea77e7965c26d2",
+        "group": "7025546902f48d0b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 570,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1e71f0d418d55656",
+        "type": "debug",
+        "z": "99ea77e7965c26d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7025546902f48d0b",
+        "type": "ui_group",
+        "name": "Fecha-Group 1",
+        "tab": "1bdb9ea7b29b9df8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1bdb9ea7b29b9df8",
+        "type": "ui_tab",
+        "name": "Fecha-Tab1",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
